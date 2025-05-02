@@ -6,10 +6,23 @@
   "scripts": {
     "start": "node index.js"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/KareemEhab/akedly.git"
+  },
+  "keywords": [
+    "OTP",
+    "Akedly",
+    "authentication"
+  ],
   "author": "Akedly",
   "license": "ISC",
   "description": "Frontend SDK for integrating Akedly OTP service",
   "dependencies": {
     "axios": "^1.9.0"
-  }
+  },
+  "bugs": {
+    "url": "https://github.com/KareemEhab/akedly/issues"
+  },
+  "homepage": "https://github.com/KareemEhab/akedly#readme"
 }

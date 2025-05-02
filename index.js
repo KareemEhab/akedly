@@ -4,6 +4,7 @@ class Akedly {
   constructor() {
     this.APIKey = "";
     this.pipelineID = "";
+    this.transactionID = "";
     this._id = "";
     this.baseURL = "https://api.akedly.io/api/v1";
   }
@@ -42,6 +43,7 @@ class Akedly {
       });
 
       if (res.status === 200 && res.data.status === "success") {
+        this.transactionID = res.data.data.transactionID;
         return res.data;
       }
 
@@ -61,7 +63,7 @@ class Akedly {
    * @param {string} transactionID - The transaction ID returned from `createTransaction`.
    * @returns {Promise<Object>} Activation response with delivery status.
    */
-  async activateTransaction(transactionID) {
+  async activateTransaction(transactionID = this.transactionID) {
     try {
       const res = await axios.post(
         `${this.baseURL}/transactions/activate/${transactionID}`,
@@ -86,7 +88,7 @@ class Akedly {
    * @param {string} [transactionObjectID] - Optional ID, defaults to last activated one.
    * @returns {Promise<Object>} Verification result.
    */
-  async verifyOTP(otp, transactionObjectID) {
+  async verifyOTP(otp, transactionObjectID = this._id) {
     try {
       const res = await axios.post(
         `${this.baseURL}/transactions/verify/${transactionObjectID}`,
